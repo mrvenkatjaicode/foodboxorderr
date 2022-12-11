@@ -9,7 +9,7 @@ final robotoRegular = TextStyle(
 
 final robotoMedium = TextStyle(
   fontFamily: 'Roboto',
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontSize: Dimensions.fontSizeDefault,
 );
 
