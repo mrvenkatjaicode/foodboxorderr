@@ -46,7 +46,8 @@ class ModuleView extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.circular(Dimensions.RADIUS_DEFAULT),
-                          color: Theme.of(context).cardColor,
+                          color: /* Theme.of(context).cardColor */ Colors
+                              .green.shade100,
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey[Get.isDarkMode ? 700 : 200],
@@ -61,9 +62,10 @@ class ModuleView extends StatelessWidget {
                                 height: 100,
                                 width: 80,
                                 decoration: BoxDecoration(
-                                  color: Colors.green.shade100,
-                                  borderRadius: BorderRadius.circular(
-                                      Dimensions.RADIUS_LARGE),
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                  // borderRadius: BorderRadius.circular(
+                                  //     Dimensions.RADIUS_LARGE),
                                 ),
                                 child: Center(
                                   child: CustomImage(

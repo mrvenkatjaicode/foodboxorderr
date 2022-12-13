@@ -153,8 +153,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           SizedBox(height: 50),
 
                           Container(
-                            height: 50,
-                            width: 400,
+                            //height: 50,
+                            // width: 400,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
@@ -216,8 +216,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           SizedBox(height: 20),
                           Container(
-                            height: 50,
-                            width: 400,
+                            // height: 50,
+                            //width: 400,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(

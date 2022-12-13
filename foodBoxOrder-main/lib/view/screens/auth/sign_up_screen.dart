@@ -112,7 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: 50),
                         Container(
                           //height: 50,
-                          width: 400,
+                         // width: 400,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
@@ -139,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: 10),
                         Container(
                           // height: 50,
-                          width: 400,
+                          //width: 400,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
@@ -166,7 +166,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: 10),
                         Container(
                           //height: 50,
-                          width: 400,
+                        //  width: 400,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
@@ -192,7 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: 10),
                         Container(
                           //height: 50,
-                          width: 400,
+                         // width: 400,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
@@ -247,7 +247,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: 10),
                         Container(
                           //height: 50,
-                          width: 400,
+                         // width: 400,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
@@ -274,7 +274,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: 10),
                         Container(
                           //height: 50,
-                          width: 400,
+                         // width: 400,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(

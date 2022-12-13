@@ -18,7 +18,10 @@ class NewPassScreen extends StatefulWidget {
   final String resetToken;
   final String number;
   final bool fromPasswordChange;
-  NewPassScreen({@required this.resetToken, @required this.number, @required this.fromPasswordChange});
+  NewPassScreen(
+      {@required this.resetToken,
+      @required this.number,
+      @required this.fromPasswordChange});
 
   @override
   State<NewPassScreen> createState() => _NewPassScreenState();
@@ -26,73 +29,126 @@ class NewPassScreen extends StatefulWidget {
 
 class _NewPassScreenState extends State<NewPassScreen> {
   final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   final FocusNode _newPasswordFocus = FocusNode();
   final FocusNode _confirmPasswordFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: widget.fromPasswordChange ? 'change_password'.tr : 'reset_password'.tr),
+      appBar: CustomAppBar(
+          title: widget.fromPasswordChange
+              ? 'change_password'.tr
+              : 'reset_password'.tr),
       endDrawer: MenuDrawer(),
-      body: SafeArea(child: Center(child: Scrollbar(child: SingleChildScrollView(
+      body: SafeArea(
+          child: Center(
+              child: Scrollbar(
+                  child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: FooterView(child: Container(
+        child: FooterView(
+            child: Container(
           width: context.width > 700 ? 700 : context.width,
-          padding: context.width > 700 ? EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT) : null,
+          padding: context.width > 700
+              ? EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT)
+              : null,
           margin: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-          decoration: context.width > 700 ? BoxDecoration(
-            color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-            boxShadow: [BoxShadow(color: Colors.grey[Get.isDarkMode ? 700 : 300], blurRadius: 5, spreadRadius: 1)],
-          ) : null,
+          decoration: context.width > 700
+              ? BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[Get.isDarkMode ? 700 : 300],
+                        blurRadius: 5,
+                        spreadRadius: 1)
+                  ],
+                )
+              : null,
           child: Column(children: [
-
-            Text('enter_new_password'.tr, style: robotoRegular, textAlign: TextAlign.center),
+            Text('enter_new_password'.tr,
+                style: robotoRegular, textAlign: TextAlign.center),
             SizedBox(height: 50),
-
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
                 color: Theme.of(context).cardColor,
-                boxShadow: [BoxShadow(color: Colors.grey[Get.isDarkMode ? 800 : 200], spreadRadius: 1, blurRadius: 5)],
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey[Get.isDarkMode ? 800 : 200],
+                      spreadRadius: 1,
+                      blurRadius: 5)
+                ],
               ),
               child: Column(children: [
-
-                CustomTextField(
-                  hintText: 'new_password'.tr,
-                  controller: _newPasswordController,
-                  focusNode: _newPasswordFocus,
-                  nextFocus: _confirmPasswordFocus,
-                  inputType: TextInputType.visiblePassword,
-                  prefixIcon: Images.lock,
-                  isPassword: true,
-                  divider: true,
+                Container(
+                //  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.yellow.shade50,
+                        ],
+                        begin: const FractionalOffset(0.0, 0.0),
+                        end: const FractionalOffset(1.0, 0.0),
+                        stops: [0.0, 1.0],
+                        tileMode: TileMode.clamp),
+                  ),
+                  child: CustomTextField(
+                    hintText: 'new_password'.tr,
+                    controller: _newPasswordController,
+                    focusNode: _newPasswordFocus,
+                    nextFocus: _confirmPasswordFocus,
+                    inputType: TextInputType.visiblePassword,
+                    prefixIcon: Images.lock,
+                    isPassword: true,
+                    divider: true,
+                  ),
                 ),
-
-                CustomTextField(
-                  hintText: 'confirm_password'.tr,
-                  controller: _confirmPasswordController,
-                  focusNode: _confirmPasswordFocus,
-                  inputAction: TextInputAction.done,
-                  inputType: TextInputType.visiblePassword,
-                  prefixIcon: Images.lock,
-                  isPassword: true,
-                  onSubmit: (text) => GetPlatform.isWeb ? _resetPassword() : null,
+                SizedBox(
+                  height: 15,
                 ),
-
+                Container(
+                 // width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.yellow.shade50,
+                        ],
+                        begin: const FractionalOffset(0.0, 0.0),
+                        end: const FractionalOffset(1.0, 0.0),
+                        stops: [0.0, 1.0],
+                        tileMode: TileMode.clamp),
+                  ),
+                  child: CustomTextField(
+                    hintText: 'confirm_password'.tr,
+                    controller: _confirmPasswordController,
+                    focusNode: _confirmPasswordFocus,
+                    inputAction: TextInputAction.done,
+                    inputType: TextInputType.visiblePassword,
+                    prefixIcon: Images.lock,
+                    isPassword: true,
+                    onSubmit: (text) =>
+                        GetPlatform.isWeb ? _resetPassword() : null,
+                  ),
+                ),
               ]),
             ),
             SizedBox(height: 30),
-
             GetBuilder<UserController>(builder: (userController) {
               return GetBuilder<AuthController>(builder: (authBuilder) {
-                return (!authBuilder.isLoading && !userController.isLoading) ? CustomButton(
-                  buttonText: 'done'.tr,
-                  onPressed: () => _resetPassword(),
-                ) : Center(child: CircularProgressIndicator());
+                return (!authBuilder.isLoading && !userController.isLoading)
+                    ? CustomButton(
+                        buttonText: 'done'.tr,
+                        onPressed: () => _resetPassword(),
+                      )
+                    : Center(child: CircularProgressIndicator());
               });
             }),
-
           ]),
         )),
       )))),
@@ -104,26 +160,33 @@ class _NewPassScreenState extends State<NewPassScreen> {
     String _confirmPassword = _confirmPasswordController.text.trim();
     if (_password.isEmpty) {
       showCustomSnackBar('enter_password'.tr);
-    }else if (_password.length < 6) {
+    } else if (_password.length < 6) {
       showCustomSnackBar('password_should_be'.tr);
-    }else if(_password != _confirmPassword) {
+    } else if (_password != _confirmPassword) {
       showCustomSnackBar('confirm_password_does_not_matched'.tr);
-    }else {
-      if(widget.fromPasswordChange) {
+    } else {
+      if (widget.fromPasswordChange) {
         UserInfoModel _user = Get.find<UserController>().userInfoModel;
         _user.password = _password;
         Get.find<UserController>().changePassword(_user).then((response) {
-          if(response.isSuccess) {
-            showCustomSnackBar('password_updated_successfully'.tr, isError: false);
-          }else {
+          if (response.isSuccess) {
+            showCustomSnackBar('password_updated_successfully'.tr,
+                isError: false);
+          } else {
             showCustomSnackBar(response.message);
           }
         });
-      }else {
-        Get.find<AuthController>().resetPassword(widget.resetToken, '+'+widget.number.trim(), _password, _confirmPassword).then((value) {
+      } else {
+        Get.find<AuthController>()
+            .resetPassword(widget.resetToken, '+' + widget.number.trim(),
+                _password, _confirmPassword)
+            .then((value) {
           if (value.isSuccess) {
-            Get.find<AuthController>().login('+'+widget.number.trim(), _password).then((value) async {
-              Get.offAllNamed(RouteHelper.getAccessLocationRoute('reset-password'));
+            Get.find<AuthController>()
+                .login('+' + widget.number.trim(), _password)
+                .then((value) async {
+              Get.offAllNamed(
+                  RouteHelper.getAccessLocationRoute('reset-password'));
             });
           } else {
             showCustomSnackBar(value.message);

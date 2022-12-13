@@ -64,7 +64,7 @@ class _FooterViewState extends State<FooterView> {
                 const SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
                 Container(
-                  width: 400,
+                  //width: 400,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(Dimensions.RADIUS_DEFAULT),

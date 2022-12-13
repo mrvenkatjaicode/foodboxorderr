@@ -65,64 +65,81 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : SizedBox(),
         SizedBox(
             height: widget.showTitle ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
-        TextField(
-          maxLines: widget.maxLines,
-          controller: widget.controller,
-          focusNode: widget.focusNode,
-          textAlign: widget.textAlign,
-          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge),
-          textInputAction: widget.inputAction,
-          keyboardType:
-              widget.isAmount ? TextInputType.number : widget.inputType,
-          cursorColor: Theme.of(context).primaryColor,
-          textCapitalization: widget.capitalization,
-          enabled: widget.isEnabled,
-          autofocus: false,
-          obscureText: widget.isPassword ? _obscureText : false,
-          inputFormatters: widget.inputType == TextInputType.phone
-              ? <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                ]
-              : widget.isAmount
-                  ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9.]'))]
-                  : widget.isNumber
-                      ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))]
-                      : null,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-              borderSide: BorderSide(style: BorderStyle.none, width: 0),
-            ),
-            isDense: true,
-            hintText: widget.hintText,
-            fillColor: /* Theme.of(context).cardColor */ Colors.transparent,
-            hintStyle: robotoRegular.copyWith(
-                fontSize: Dimensions.fontSizeLarge,
-                color: Theme.of(context).hintColor),
-            filled: true,
-            prefixIcon: widget.prefixIcon != null
-                ? Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: widget.prefixSize),
-                    child:
-                        Image.asset(widget.prefixIcon, height: 20, width: 20),
-                  )
-                : null,
-            suffixIcon: widget.isPassword
-                ? IconButton(
-                    icon: Icon(
-                        _obscureText ? Icons.visibility_off : Icons.visibility,
-                        color: Theme.of(context).hintColor.withOpacity(0.3)),
-                    onPressed: _toggle,
-                  )
-                : null,
+        Container(
+          //width: 400,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+                colors: [
+                  Colors.green.shade100,
+                  Colors.yellow.shade50,
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
           ),
-          onSubmitted: (text) => widget.nextFocus != null
-              ? FocusScope.of(context).requestFocus(widget.nextFocus)
-              : widget.onSubmit != null
-                  ? widget.onSubmit(text)
+          child: TextField(
+            maxLines: widget.maxLines,
+            controller: widget.controller,
+            focusNode: widget.focusNode,
+            textAlign: widget.textAlign,
+            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge),
+            textInputAction: widget.inputAction,
+            keyboardType:
+                widget.isAmount ? TextInputType.number : widget.inputType,
+            cursorColor: Theme.of(context).primaryColor,
+            textCapitalization: widget.capitalization,
+            enabled: widget.isEnabled,
+            autofocus: false,
+            obscureText: widget.isPassword ? _obscureText : false,
+            inputFormatters: widget.inputType == TextInputType.phone
+                ? <TextInputFormatter>[
+                    FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                  ]
+                : widget.isAmount
+                    ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9.]'))]
+                    : widget.isNumber
+                        ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))]
+                        : null,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                borderSide: BorderSide(style: BorderStyle.none, width: 0),
+              ),
+              isDense: true,
+              hintText: widget.hintText,
+              fillColor: /* Theme.of(context).cardColor */ Colors.transparent,
+              hintStyle: robotoRegular.copyWith(
+                  fontSize: Dimensions.fontSizeLarge,
+                  color: Theme.of(context).hintColor),
+              filled: true,
+              prefixIcon: widget.prefixIcon != null
+                  ? Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: widget.prefixSize),
+                      child:
+                          Image.asset(widget.prefixIcon, height: 20, width: 20),
+                    )
                   : null,
-          onChanged: widget.onChanged,
+              suffixIcon: widget.isPassword
+                  ? IconButton(
+                      icon: Icon(
+                          _obscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Theme.of(context).hintColor.withOpacity(0.3)),
+                      onPressed: _toggle,
+                    )
+                  : null,
+            ),
+            onSubmitted: (text) => widget.nextFocus != null
+                ? FocusScope.of(context).requestFocus(widget.nextFocus)
+                : widget.onSubmit != null
+                    ? widget.onSubmit(text)
+                    : null,
+            onChanged: widget.onChanged,
+          ),
         ),
         /* widget.divider
             ? Padding(
